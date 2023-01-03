@@ -33,7 +33,7 @@ function draw(){
     stroke("#000000");
 
 
-    if (LWs > 0.2){
+    if (LWs > 0.02){
       circle(LWx,LWy, 20);
       LWyA = Number(LWy);
       nd = floor(LWyA);
