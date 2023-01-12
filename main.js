@@ -1,8 +1,10 @@
 song = "";
 LWx = 0;
 LWy = 0;
+LWs = 0;
 RWx = 0;
 RWy = 0;
+RWs = 0;
 
 
 
@@ -32,6 +34,33 @@ function draw(){
     fill("#FF0000");
     stroke("#000000");
 
+    circle(RWx,RWy, 20);
+if (RWs > 0.02){
+    if (RWy > 0 && RWy <= 100){
+        song.rate(0.5);
+        document.getElementById("speed").innerHTML = "Speed = 0.5x";
+    }
+
+    if (RWy > 100 && RWy <= 200){
+        song.rate(1);
+        document.getElementById("speed").innerHTML = "Speed = 1x";
+    }
+
+    if (RWy > 200 && RWy <= 300){
+        song.rate(1.5);
+        document.getElementById("speed").innerHTML = "Speed = 1.5x";
+    }
+
+    if (RWy > 300 && RWy <= 400){
+        song.rate(2);
+        document.getElementById("speed").innerHTML = "Speed = 2";
+    }
+
+    if (RWy > 400 && RWy <= 500){
+        song.rate(2.5);
+        document.getElementById("speed").innerHTML = "Speed = 2.5x";
+    }
+}
 
     if (LWs > 0.02){
       circle(LWx,LWy, 20);
@@ -54,6 +83,8 @@ function gotPoses(results){
         console.log(results);
         LWs = results[0].pose.keypoints[9].score;
         console.log(LWs);
+        RWs = results[0].pose.keypoints[10].score;
+        console.log(RWs);
 
         LWx = results[0].pose.leftWrist.x;
         LWy = results[0].pose.leftWrist.y;
